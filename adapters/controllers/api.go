@@ -40,6 +40,7 @@ func (a *ApiServer) Start() {
 	}
 
 	router.StaticFile("favicon.ico", "./favicon.ico")
+	router.GET("/", a.slash)
 	router.GET("/gettime", a.getTime)
 
 	// trap SIGINT / SIGTERM to exit cleanly
@@ -67,5 +68,12 @@ func (a *ApiServer) getTime(c *gin.Context) {
 	c.JSONP(http.StatusOK, gin.H{
 		"server":       a.infoString,
 		"time RFC3999": a.svc.Time(),
+	})
+}
+
+func (a *ApiServer) slash(c *gin.Context) {
+	c.JSONP(http.StatusOK, gin.H{
+		"server": a.infoString,
+		"status": "running",
 	})
 }

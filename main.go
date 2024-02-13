@@ -10,7 +10,7 @@ import (
 
 var CompileDate string
 
-const version = 0.1
+const version = 0.2
 
 func main() {
 	var (
