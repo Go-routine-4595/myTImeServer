@@ -1,0 +1,13 @@
+version: '1'
+services:
+  mytimeserver:
+    build: .
+    image: mytimeserver:0.1
+    ports:
+      - 3000:3000
+    networks:
+      - mynetwork
+networks:
+  mynetwork:
+    driver: bridge
+
